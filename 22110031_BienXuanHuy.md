@@ -229,11 +229,26 @@ Here's the command I will use:
 sqlmap -u "http://localhost/vulnerabilities/sqli/?id=1&Submit=Submit#" --cookie="security=low; PHPSESSID=23tquf80cnqkgtfqutueprkto4" --dbs --batch
 ```
 
-Explation options:
-* -u: Indicate target URL.
-* --cookie: Provide session information to keep maintaining connection when attacking.
-* --dbs: Reveal only databases information.
-* --batch: Skip redundant steps in my labs.
+Explain options:
+* -u: Indicates target URL.
+* --cookie: Provides session information to keep maintaining connection when attacking.
+* --dbs: Reveals only databases information on the target server.
+* --batch: Skips redundant prompts in my labs.
+
+After running the command, here's the result:
+
+<img width="500" alt="Screenshot" src="https://github.com/leonart-delux/informationsecurity-labs/blob/f05b961503ff67d9e74f3f1eb4115a876a9368be/images/task1/database_result.jpg"><br>
+
+First info is about back-end technologies:
+* web server operating system: Linux Debian 9 (stretch)
+* web application technology: Apache 2.4.25
+* back-end DBMS: MySQL >= 5.0 (MariaDB fork)
+
+This information is very helpful as each version or each technology type has different security technique.
+
+Second info is about databases, what we need:
+* dvwa
+* information_schema
 
 **Question 2**: Use sqlmap to get tables, users information
 **Answer 2**:
