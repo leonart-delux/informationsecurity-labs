@@ -300,3 +300,28 @@ Here's the result:
 
 In question 2 above, when sqlmap extracts information from users table, including hashed password field, it also decrypts the password. We can see the decrypted values are placed in parentheses.
 
+I will still re-decrypt the those hashed passwords again in order to verify results of sqlmap, also learn how to use John the Ripper
+
+After installing John the Ripper version 1.9.0-jumbo-1 64-bit Windows, I open cmd in folder /downloadedJohnFile/run/ and run this command:
+
+```
+john --show --format=Raw-MD5 C:\Users\Xuanh\Desktop\hash.txt
+```
+
+Explain options:
+* --show: Shows result after decryption.
+* --format=Raw-MD5: Specifies what hashing type is used.
+* Follows by text file contains hashed codes, listed line by line.
+
+In hash.txt file, I stored values in order of users table, so the expected result should be:
+* password
+* abc123
+* charley
+* letmein
+* password
+
+Here's the result after run above command:
+
+<img width="500" alt="Screenshot" src="https://github.com/leonart-delux/informationsecurity-labs/blob/43eb5f5b694f3a249af7f07bd8cdb56cea2afaea/images/task1/decrypted.jpg"><br>
+
+As we can see decrypted passwords match.
