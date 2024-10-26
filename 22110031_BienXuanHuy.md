@@ -298,5 +298,5 @@ Here's the result:
 **Question 3**: Make use of John the Ripper to disclose the password of all database users from the above exploit
 **Answer 3**:
 
-
+In question 2 above, when sqlmap extracts information from users table, including hashed password field, it also decrypts the password. We can see the decrypted values are placed in parentheses.
 
