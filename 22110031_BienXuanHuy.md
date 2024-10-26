@@ -207,6 +207,23 @@ The content of /etc/passwd matches the content in /tmp/outfile.
 **Question 1**: Use sqlmap to get information about all available databases
 **Answer 1**:
 
+#### 1. Preparation.
+
+After getting into SQL Injection option of DVWA, which we will use sqlmap on, we need to retrieve some needed informations first.
+
+First, we need the URL. I will submit first request with id=1 to form a complete URL which sent back to server. And here's what we have: "http://localhost/vulnerabilities/sqli/?id=1&Submit=Submit#". 
+
+It also reveals that current page is using GET method.
+
+Second, we need phpsessid and cookie. They keeps connection between me and server. Without them, sqlmap can't access into server.
+
+Following these steps: Inspect web page --> Move to Application tab. Two values phpsessid and cookie are shown.
+
+<img width="500" alt="Screenshot" src="https://github.com/leonart-delux/informationsecurity-labs/blob/85521ad678a86994e7d6259f670652bc05a1f789/images/task1/phpsessid_cookie.jpg"><br>
+
+#### 2. From command.
+
+
 **Question 2**: Use sqlmap to get tables, users information
 **Answer 2**:
 
