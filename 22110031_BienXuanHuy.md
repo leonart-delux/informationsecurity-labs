@@ -277,6 +277,24 @@ Database dvwa has 2 tables:
 * guestbook
 * users
 
+#### 2. Get information of users table.
+
+As we acknowledged in previous sub-task, dvwa has a users table which likely contains information about users.
+
+To get data of that table, here's the command I use:
+
+```
+sqlmap -u "http://localhost/vulnerabilities/sqli/?id=1&Submit=Submit#" --cookie="security=low; PHPSESSID=23tquf80cnqkgtfqutueprkto4" --batch -D dvwa -T users --dump
+```
+
+Explain options:
+* -D dvwa -T users: Indicates target table of specific database. In this case, it refers to the users table of dvwa.
+* --dump: Extracts information of indicated table.
+
+Here's the result:
+
+<img width="500" alt="Screenshot" src="https://github.com/leonart-delux/informationsecurity-labs/blob/76dddbcaadc2e6918fa3c783eb5349ceb6a4ad33/images/task1/users_table.jpg"><br>
+
 **Question 3**: Make use of John the Ripper to disclose the password of all database users from the above exploit
 **Answer 3**:
 
