@@ -215,14 +215,25 @@ First, we need the URL. I will submit first request with id=1 to form a complete
 
 It also reveals that current page is using GET method.
 
-Second, we need phpsessid and cookie. They keeps connection between me and server. Without them, sqlmap can't access into server.
+Second, we need PHPSESSID as it keeps connection between us and server. Without PHPSESSID, sqlmap can't access into server.
 
-Following these steps: Inspect web page --> Move to Application tab. Two values phpsessid and cookie are shown.
+Following these steps: Inspect web page --> Move to Application tab. PHPSESSID is shown.
 
 <img width="500" alt="Screenshot" src="https://github.com/leonart-delux/informationsecurity-labs/blob/85521ad678a86994e7d6259f670652bc05a1f789/images/task1/phpsessid_cookie.jpg"><br>
 
 #### 2. From command.
 
+Here's the command I will use:
+
+```
+sqlmap -u "http://localhost/vulnerabilities/sqli/?id=1&Submit=Submit#" --cookie="security=low; PHPSESSID=23tquf80cnqkgtfqutueprkto4" --dbs --batch
+```
+
+Explation options:
+* -u: Indicate target URL.
+* --cookie: Provide session information to keep maintaining connection when attacking.
+* --dbs: Reveal only databases information.
+* --batch: Skip redundant steps in my labs.
 
 **Question 2**: Use sqlmap to get tables, users information
 **Answer 2**:
