@@ -244,14 +244,38 @@ First info is about back-end technologies:
 * web application technology: Apache 2.4.25
 * back-end DBMS: MySQL >= 5.0 (MariaDB fork)
 
-This information is very helpful as each version or each technology type has different security technique.
+This information is very helpful as each version or each technology type has different security techniques.
 
-Second info is about databases, what we need:
+Second info is about databases we we need:
 * dvwa
 * information_schema
 
 **Question 2**: Use sqlmap to get tables, users information
 **Answer 2**:
+
+#### 1. Get tables of database.
+
+In previous question, we know that DVWA has 2 databases: dvwa and information_schema
+
+dvwa is the provided database for user like us to inspect the vulnerabilities, so in this question I will inspect its tables.
+
+Here's the commamd:
+
+```
+sqlmap -u "http://localhost/vulnerabilities/sqli/?id=1&Submit=Submit#" --cookie="security=low; PHPSESSID=23tquf80cnqkgtfqutueprkto4" --batch -D dvwa --tables
+```
+
+Explain options:
+* -D dvwa: Indicates target database.
+* --tables: Reveals tables of target database.
+
+Here's the result:
+
+<img width="500" alt="Screenshot" src="https://github.com/leonart-delux/informationsecurity-labs/blob/a0d8cf04ed6862d748997cfd2f2d70948e670b23/images/task1/dvwa_tables.jpg"><br>
+
+Database dvwa has 2 tables:
+* guestbook
+* users
 
 **Question 3**: Make use of John the Ripper to disclose the password of all database users from the above exploit
 **Answer 3**:
