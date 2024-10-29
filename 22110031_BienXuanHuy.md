@@ -221,7 +221,7 @@ Following these steps: Inspect web page --> Move to Application tab. PHPSESSID i
 
 <img width="500" alt="Screenshot" src="https://github.com/leonart-delux/informationsecurity-labs/blob/85521ad678a86994e7d6259f670652bc05a1f789/images/task1/phpsessid_cookie.jpg"><br>
 
-#### 2. From command.
+#### 2. Form command.
 
 Here's the command I will use:
 
