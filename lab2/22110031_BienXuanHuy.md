@@ -7,6 +7,23 @@ then veryfing at receiving side.
 
 **Answer 1**:
 
+### Idea: Use HMAC to ensure both integrity and authenticity.
+
+### Step 1: Install needed packages
+
+To achieve the goal of this lab we first need to install some packages on both containers.
+
+```
+apt update
+apt install net-tools
+apt install openssl
+apt install netcat-traditional
+```
+
+Explain each options:
+- apt install net-tools: In order to use ifconfig to check IP adress.
+- apt install openssl: Use openssl to achieve secure goal.
+- apt install netcat-traditional: Use netcat to send - receive files.
  
 # Task 2: Transfering encrypted file and decrypt it with hybrid encryption. 
 **Question 1**:
