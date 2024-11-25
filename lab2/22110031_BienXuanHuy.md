@@ -345,7 +345,7 @@ As you can see the server no longer response to our requests.
 
 ### Step 4: Unblock requests.
 
-Now I will unblock *HTTP*, *ICMP* requests by using these commands:
+Now I will unblock *HTTP*, *ICMP*, *SSH* requests by using these commands:
 
 ```
 sudo iptables -D INPUT -p tcp --dport 80 -j DROP
