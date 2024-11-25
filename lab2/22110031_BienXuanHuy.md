@@ -75,8 +75,28 @@ Result in receiver:
 
 ### Step 4: Check MAC.
 
+In container of receiver, use openssl again to create MAC of *greet.txt*
 
+```
+openssl dgst -sha256 -mac HMAC -macopt key:secret123 -out receive.hmac greet.txt
+```
+ Use diff command to check the difference between *send.hmac* and *receive.hmac*
 
+```
+diff send.hmac receive.hmac
+```
+
+Result shows nothing mean no differences.
+
+<img width="500" alt="Screenshot" src="https://github.com/leonart-delux/informationsecurity-labs/blob/7b0fc763ffe18971aa2c9ed53d42a09b14e22798/lab2/image/checkDiffMAC.jpg">
+
+We can manually recheck again by **cat** command
+
+<img width="500" alt="Screenshot" src="https://github.com/leonart-delux/informationsecurity-labs/blob/7b0fc763ffe18971aa2c9ed53d42a09b14e22798/lab2/image/checkStep2MAC.jpg">
+
+As we can easily see 2 files are the same.
+
+Mission success.
  
 # Task 2: Transfering encrypted file and decrypt it with hybrid encryption. 
 **Question 1**:
