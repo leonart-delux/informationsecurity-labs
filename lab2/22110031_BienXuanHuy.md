@@ -99,7 +99,7 @@ We can manually recheck again by **cat** command
 
 As we can easily see 2 files are the same.
 
-Mission success.
+Conclusion: Mission success.
  
 # Task 2: Transfering encrypted file and decrypt it with hybrid encryption. 
 **Question 1**:
