@@ -7,7 +7,10 @@ then veryfing at receiving side.
 
 **Answer 1**:
 
-### Idea: Use HMAC to ensure both integrity and authenticity.
+### Idea: Use HMAC as it ensures both integrity and authenticity.
+
+- Integrity: HMAC uses a cryptographic hash (e.g., SHA-256) with a secret key, ensuring any data alteration changes the HMAC, detecting tampering.
+- Authenticity: Only people have the secret key can generate or verify the HMAC, preventing forgery and confirming the data's source.
 
 ### Step 1: Install needed packages
 
