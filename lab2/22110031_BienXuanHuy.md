@@ -286,4 +286,42 @@ The connection is fine:
 
 <img width="500" alt="Screenshot" src="https://github.com/leonart-delux/informationsecurity-labs/blob/0c84d7aff9263388faeb55491a774fa3e108ece4/lab2/image/ICMPConn.jpg">
 
+### Step 3: Close service on server
+
+Now I will block *HTTP*, *ICMP* requests by using *iptables*.
+
+Using these commands:
+
+```
+sudo iptables -A INPUT -p tcp --dport 80 -j DROP
+sudo iptables -A INPUT -p icmp -j DROP
+```
+
+Explain:
+- -A INPUT: Add new rule for all incoming requests from other hosts.
+- -p <protocol>:  Which port will apply the rule.
+- --dport 80: This rule is applied on port 80 only.
+- -j DROP: Drop all data packages match this rule.
+
+As the ICMP works on network layer, there's no port specified in rule.
+
+By running these commands, server will ignore all *HTTP*, *ICMP* requests.
+
+Rule table now:
+
+<img width="500" alt="Screenshot" src="https://github.com/leonart-delux/informationsecurity-labs/blob/0c84d7aff9263388faeb55491a774fa3e108ece4/lab2/image/ICMPConn.jpg">
+
+Now I will try to connect to server from client using protocols that blocked.
+
+With HTTP:
+
+<img width="500" alt="Screenshot" src="https://github.com/leonart-delux/informationsecurity-labs/blob/74e24ce8a9cb4993575d7b5522be089e139ba3d1/lab2/image/httpClose.jpg">
+
+With ICMP:
+
+<img width="500" alt="Screenshot" src="https://github.com/leonart-delux/informationsecurity-labs/blob/74e24ce8a9cb4993575d7b5522be089e139ba3d1/lab2/image/icmpClose.jpg">
+
+As we can see the server no longer response to our requests.
+
+
 
