@@ -321,7 +321,35 @@ With ICMP:
 
 <img width="500" alt="Screenshot" src="https://github.com/leonart-delux/informationsecurity-labs/blob/74e24ce8a9cb4993575d7b5522be089e139ba3d1/lab2/image/icmpClose.jpg">
 
-As we can see the server no longer response to our requests.
+As you can see the server no longer response to our requests.
+
+### Step 4: Unblock requests.
+
+Now I will unblock *HTTP*, *ICMP* requests by using these commands:
+
+```
+sudo iptables -D INPUT -p tcp --dport 80 -j DROP
+sudo iptables -D INPUT -p icmp -j DROP
+```
+
+The unlock command is pretty same as block command, the different detail is that -D replaces -A, which means that this command deletes the rule instead of adding.
+
+Retest connection:
+
+With HTTP:
+
+<img width="500" alt="Screenshot" src="https://github.com/leonart-delux/informationsecurity-labs/blob/251c73b42bf097483bc9db747afc7e1357d0f148/lab2/image/httpUnblock.jpg">
+
+With ICMP:
+
+<img width="500" alt="Screenshot" src="https://github.com/leonart-delux/informationsecurity-labs/blob/251c73b42bf097483bc9db747afc7e1357d0f148/lab2/image/imcpUnblock.jpg">
+
+The connection is available again.
+
+Conclusion: Misson success.
+
+
+
 
 
 
