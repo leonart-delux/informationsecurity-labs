@@ -250,10 +250,11 @@ SSH is running normally.
 
 ### Step 2: Test connection
 
-In the remain VM, which is now the client, we also need to install *curl* package to test HTTP connection.
+In the remain VM, which is now the client, we need to install *curl* package to test HTTP connection. *openssh-client* package is also required to connect to server using SSH.
 
 ```
 sudo apt install curl
+sudo apt install openssh-client
 ```
 
 Use *ifconfig* in server terminal, acknowledge the IP address of server is 172.17.0.3. 
@@ -286,30 +287,45 @@ The connection is fine:
 
 <img width="500" alt="Screenshot" src="https://github.com/leonart-delux/informationsecurity-labs/blob/0c84d7aff9263388faeb55491a774fa3e108ece4/lab2/image/ICMPConn.jpg">
 
+#### SSH
+
+As SSH is for secure remote control, we need to create an user and set a password for that user on server first.
+
+I will create a user with username and password are user72 and 123, respectively.
+
+<img width="500" alt="Screenshot" src="https://github.com/leonart-delux/informationsecurity-labs/blob/55696abe00df74c89accc921faaabefe6dca33f2/lab2/image/addUser.jpg">
+
+Then in client, I use command ``` ssh user72@172.17.0.3 ``` to connect to user72 on server (IP 172.17.0.3 of server is specified) and enter password:
+
+<img width="500" alt="Screenshot" src="https://github.com/leonart-delux/informationsecurity-labs/blob/55696abe00df74c89accc921faaabefe6dca33f2/lab2/image/sshConn.jpg">
+
+As you can see, the connection is fine.
+
 ### Step 3: Close service on server
 
-Now I will block *HTTP*, *ICMP* requests by using *iptables*.
+Now I will block *HTTP*, *ICMP*, *SSH* requests by using *iptables*.
 
 Using these commands:
 
 ```
 sudo iptables -A INPUT -p tcp --dport 80 -j DROP
 sudo iptables -A INPUT -p icmp -j DROP
+sudo iptables -A INPUT -p tcp --dport 22 -j DROP
 ```
 
 Explain:
 - -A INPUT: Add new rule for all incoming requests from other hosts.
 - -p <protocol>:  Which port will apply the rule.
-- --dport 80: This rule is applied on port 80 only.
+- --dport <port>: This rule is applied on specified port only (80 for HTTP, 22 for SSH).
 - -j DROP: Drop all data packages match this rule.
 
 As the ICMP works on network layer, there's no port specified in rule.
 
-By running these commands, server will ignore all *HTTP*, *ICMP* requests.
+By running these commands, server will ignore all *HTTP*, *ICMP*, *SSH* requests.
 
 Rule table now:
 
-<img width="500" alt="Screenshot" src="https://github.com/leonart-delux/informationsecurity-labs/blob/0c84d7aff9263388faeb55491a774fa3e108ece4/lab2/image/ICMPConn.jpg">
+<img width="500" alt="Screenshot" src="https://github.com/leonart-delux/informationsecurity-labs/blob/55696abe00df74c89accc921faaabefe6dca33f2/lab2/image/iptables.jpg">
 
 Now I will try to connect to server from client using protocols that blocked.
 
@@ -321,6 +337,10 @@ With ICMP:
 
 <img width="500" alt="Screenshot" src="https://github.com/leonart-delux/informationsecurity-labs/blob/74e24ce8a9cb4993575d7b5522be089e139ba3d1/lab2/image/icmpClose.jpg">
 
+With SSH:
+
+<img width="500" alt="Screenshot" src="https://github.com/leonart-delux/informationsecurity-labs/blob/55696abe00df74c89accc921faaabefe6dca33f2/lab2/image/sshClose.jpg">
+
 As you can see the server no longer response to our requests.
 
 ### Step 4: Unblock requests.
@@ -330,6 +350,7 @@ Now I will unblock *HTTP*, *ICMP* requests by using these commands:
 ```
 sudo iptables -D INPUT -p tcp --dport 80 -j DROP
 sudo iptables -D INPUT -p icmp -j DROP
+sudo iptables -D INPUT -p tcp --dport 22 -j DROP
 ```
 
 The unlock command is pretty same as block command, the different detail is that -D replaces -A, which means that this command deletes the rule instead of adding.
@@ -344,7 +365,11 @@ With ICMP:
 
 <img width="500" alt="Screenshot" src="https://github.com/leonart-delux/informationsecurity-labs/blob/251c73b42bf097483bc9db747afc7e1357d0f148/lab2/image/imcpUnblock.jpg">
 
-The connection is available again.
+With SSH:
+
+<img width="500" alt="Screenshot" src="https://github.com/leonart-delux/informationsecurity-labs/blob/55696abe00df74c89accc921faaabefe6dca33f2/lab2/image/sshReconnect.jpg">
+
+The connections from those requests are available again.
 
 Conclusion: Misson success.
 
