@@ -151,6 +151,22 @@ openssl rsautl -encrypt -inkey receiver_pub_key.pem -pubin -in secret.txt -out s
 
 Now I will send *secret_key.enc* and *greet.enc* from sender to receiver using netcat
 
+```
+// Transfer encrypted secret key
+// In receiver
+nc -l -p 3032 > enc_key.txt
+
+// In sender
+cat secret_key.enc | nc 172.17.0.3 3032
+
+// Transfer cyphertext
+// In receiver
+nc -l -p 3032 >enc_file.txt
+
+// In sender
+cat greet.enc | nc 172.17.0.3 3032
+```
+
 
 ### Step 3: Decryption.
 
