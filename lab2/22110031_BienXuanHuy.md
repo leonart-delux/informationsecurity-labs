@@ -179,6 +179,12 @@ In receiver, use this command to decrypt the secret key of ciphertext
 openssl rsautl -decrypt -inkey private_key.pem -in enc_key.txt -out secret_key.txt
 ```
 
+Check secret key
+
+<img width="500" alt="Screenshot" src="https://github.com/leonart-delux/informationsecurity-labs/blob/05092f8a631bb85daba53132ef887a31cb254338/lab2/image/revealSecKey.jpg">
+
+As this lab is under our control, we know that this key is the right one.
+
 Then, use the decrypted secret key to decrypt the ciphertext
 
 ```
@@ -189,7 +195,9 @@ Here's the result.
 
 <img width="500" alt="Screenshot" src="https://github.com/leonart-delux/informationsecurity-labs/blob/c69943bf9d5fe40390fcdca9a7135b3c650be579/lab2/image/result.jpg">
 
-Mission completed.
+As we can see the content matches.
+
+Conclusion: Mission completed.
 
 # Task 3: Firewall configuration
 **Question 1**:
