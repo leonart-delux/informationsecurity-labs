@@ -168,8 +168,9 @@ openssl enc -d -aes-256-cbc -in enc_file.txt -out dec_file.txt -k $(cat secret_k
 
 Here's the result.
 
-Mission completed.
+<img width="500" alt="Screenshot" src="https://github.com/leonart-delux/informationsecurity-labs/blob/c69943bf9d5fe40390fcdca9a7135b3c650be579/lab2/image/result.jpg">
 
+Mission completed.
 
 # Task 3: Firewall configuration
 **Question 1**:
