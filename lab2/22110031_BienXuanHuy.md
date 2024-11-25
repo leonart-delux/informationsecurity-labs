@@ -1,4 +1,4 @@
-# Lab #2,22110031, Bien Xuan Huy, INSE330380E_01FIE
+![image](https://github.com/user-attachments/assets/aaacba4b-d8cf-4dbd-a392-50e7210b2b8f)# Lab #2,22110031, Bien Xuan Huy, INSE330380E_01FIE
 # Task 1: Transfer files between computers  
 **Question 1**: 
 Conduct transfering a single plaintext file between 2 computers, 
@@ -105,6 +105,36 @@ The file is symmetrically encrypted/decrypted by exchanging secret key which is 
 All steps are made manually with openssl at the terminal of each computer.
 
 **Answer 1**:
+
+### Step 1: Prepare RSA conditions.
+
+In container of receiver, use these 2 commands of openssl to create public key and private key using RSA
+
+```
+openssl genpkey -algorithm RSA -out private_key.pem
+openssl rsa -pubout -in private_key.pem -out public_key.pem
+```
+
+Here's the result:
+
+<img width="500" alt="Screenshot" src="https://github.com/leonart-delux/informationsecurity-labs/blob/519cd03bd73a458c0834715ca0f5cbdeaa1d7160/lab2/image/pub_priv_key.jpg">
+
+Then use netcat to send the public key from receiver to sender. As I did this job in previous task, here I will quickly do following commands.
+
+```
+// In container of sender
+nc -l -p 3032 > receiver_pub_key.pem
+
+// In container of receiver
+cat public_key.pem | nc 172.17.0.2 3032
+```
+
+We can easily get IP address of sender by using command **ifconfig** in container of sender. 
+
+Here's the result in container of sender:
+
+<img width="500" alt="Screenshot" src="https://github.com/leonart-delux/informationsecurity-labs/blob/519cd03bd73a458c0834715ca0f5cbdeaa1d7160/lab2/image/senderReceivePubkey.jpg">
+
 
 
 # Task 3: Firewall configuration
