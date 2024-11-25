@@ -250,6 +250,40 @@ SSH is running normally.
 
 ### Step 2: Test connection
 
-In
+In the remain VM, which is now the client, we also need to install *curl* package to test HTTP connection.
+
+```
+sudo apt install curl
+```
+
+Use *ifconfig* in server terminal, acknowledge the IP address of server is 172.17.0.3. 
+
+<img width="500" alt="Screenshot" src="https://github.com/leonart-delux/informationsecurity-labs/blob/7938273d87f036043cf0752e23eafc617cc445d1/lab2/image/sshStart.jpg">
+
+#### HTTP
+
+Use curl command to test HTTP connection with server:
+
+```
+curl -I http://172.17.0.3
+```
+
+Option -I is used to display the HTTP header only (not the entire HTML file).
+
+The connection is fine:
+
+<img width="500" alt="Screenshot" src="https://github.com/leonart-delux/informationsecurity-labs/blob/0c84d7aff9263388faeb55491a774fa3e108ece4/lab2/image/HTTP.jpg">
+
+#### ICMP
+
+Use this command to test the ICMP connection with server:
+
+```
+ping 172.17.0.3
+```
+
+The connection is fine:
+
+<img width="500" alt="Screenshot" src="https://github.com/leonart-delux/informationsecurity-labs/blob/0c84d7aff9263388faeb55491a774fa3e108ece4/lab2/image/ICMPConn.jpg">
 
 
