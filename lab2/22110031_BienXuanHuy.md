@@ -164,7 +164,7 @@ cat secret_key.enc | nc 172.17.0.3 3032
 
 // Transfer ciphertext
 // In receiver
-nc -l -p 3032 >enc_file.txt
+nc -l -p 3032 > enc_file.txt
 
 // In sender
 cat greet.enc | nc 172.17.0.3 3032
