@@ -50,6 +50,33 @@ Secret ket is: secret123
 Result in sender:
 
 <img width="500" alt="Screenshot" src="https://github.com/leonart-delux/informationsecurity-labs/blob/e516b181f69b99453c76220c543d9907cfa740e4/lab2/image/sendMAC.jpg">
+
+### Step 3: Send and receive file
+
+In container of receiver, use command of netcat to start receving file:
+
+```
+nc -l -p <port> > received_file.txt
+```
+
+And in container of sender, use this command to send file:
+
+```
+cat file.txt | nc <receiver_ip> <port>
+```
+
+We need to send 2 files, so this cycle must to be looped 2 times. Note that the receiver need to start receiving before sender sends file.
+
+The port I will use is 3032.
+
+Result in receiver:
+
+<img width="500" alt="Screenshot" src="https://github.com/leonart-delux/informationsecurity-labs/blob/82ae1c3416ed038d16f142177226553061bb37e0/lab2/image/receiveMAC.jpg">
+
+### Step 4: Check MAC.
+
+
+
  
 # Task 2: Transfering encrypted file and decrypt it with hybrid encryption. 
 **Question 1**:
