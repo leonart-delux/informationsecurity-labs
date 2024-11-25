@@ -21,9 +21,35 @@ apt install netcat-traditional
 ```
 
 Explain each options:
-- apt install net-tools: In order to use ifconfig to check IP adress.
+- apt install net-tools: In order to use *ifconfig* to check IP adress.
 - apt install openssl: Use openssl to achieve secure goal.
 - apt install netcat-traditional: Use netcat to send - receive files.
+
+### Step 2: Check IP address of receiver and conduct files to send.
+
+To check IP address of receiver, in the receive container, use command ifconfig.
+
+<img width="500" alt="Screenshot" src="https://github.com/leonart-delux/informationsecurity-labs/blob/015a2ffa6a8ce4d2917eb34a2a1ace3325d0a77c/lab2/image/checkReceiveIP.jpg">
+
+The IP address of receiver in network is: 172.17.0.3.
+
+In container of sender, I create a file named *greet.txt* by using this command
+
+```
+echo "Hi from Sender!" > greet.txt
+```
+
+Then I use command of openssl to creat a HMAC file named *send.hmac* which contains MAC of *greet.txt*
+
+```
+openssl dgst -sha256 -mac HMAC -macopt key:secret123 -out send.hmac greet.txt
+```
+
+Secret ket is: secret123
+
+Result in sender:
+
+<img width="500" alt="Screenshot" src="https://github.com/leonart-delux/informationsecurity-labs/blob/e516b181f69b99453c76220c543d9907cfa740e4/lab2/image/sendMAC.jpg">
  
 # Task 2: Transfering encrypted file and decrypt it with hybrid encryption. 
 **Question 1**:
