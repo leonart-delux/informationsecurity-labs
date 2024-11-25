@@ -207,7 +207,7 @@ From VMs of previous tasks, install iptables and configure one of the 2 VMs as a
 
 ### Step 1: Set up environment on server
 
-I will configure the first container (the sender of 2 previous tasks) to be a web server.
+Randomly choose a VM to be a web server.
 
 First we need to install needed packages:
 
@@ -247,5 +247,9 @@ Result:
 <img width="500" alt="Screenshot" src="https://github.com/leonart-delux/informationsecurity-labs/blob/7938273d87f036043cf0752e23eafc617cc445d1/lab2/image/sshStart.jpg">
 
 SSH is running normally.
+
+### Step 2: Test connection
+
+In
 
 
