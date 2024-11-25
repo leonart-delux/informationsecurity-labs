@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/aaacba4b-d8cf-4dbd-a392-50e7210b2b8f)# Lab #2,22110031, Bien Xuan Huy, INSE330380E_01FIE
+# Lab #2,22110031, Bien Xuan Huy, INSE330380E_01FIE
 # Task 1: Transfer files between computers  
 **Question 1**: 
 Conduct transfering a single plaintext file between 2 computers, 
