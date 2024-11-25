@@ -162,7 +162,7 @@ nc -l -p 3032 > enc_key.txt
 // In sender
 cat secret_key.enc | nc 172.17.0.3 3032
 
-// Transfer cyphertext
+// Transfer ciphertext
 // In receiver
 nc -l -p 3032 >enc_file.txt
 
@@ -173,13 +173,13 @@ cat greet.enc | nc 172.17.0.3 3032
 
 ### Step 3: Decryption.
 
-In receiver, use this command to decrypt the secret key of cyphertext
+In receiver, use this command to decrypt the secret key of ciphertext
 
 ```
 openssl rsautl -decrypt -inkey private_key.pem -in enc_key.txt -out secret_key.txt
 ```
 
-Then, use the decrypted secret key to decrypt the cyphertext
+Then, use the decrypted secret key to decrypt the ciphertext
 
 ```
 openssl enc -d -aes-256-cbc -in enc_file.txt -out dec_file.txt -k $(cat secret_key.txt)
