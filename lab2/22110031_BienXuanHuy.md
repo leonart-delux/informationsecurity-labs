@@ -258,7 +258,7 @@ sudo apt install curl
 
 Use *ifconfig* in server terminal, acknowledge the IP address of server is 172.17.0.3. 
 
-<img width="500" alt="Screenshot" src="https://github.com/leonart-delux/informationsecurity-labs/blob/7938273d87f036043cf0752e23eafc617cc445d1/lab2/image/sshStart.jpg">
+<img width="500" alt="Screenshot" src="https://github.com/leonart-delux/informationsecurity-labs/blob/8b720bc24ceca74d382862ed6afe27a113c39f3c/lab2/image/serverIP.jpg">
 
 #### HTTP
 
