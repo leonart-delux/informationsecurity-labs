@@ -111,7 +111,7 @@ All steps are made manually with openssl at the terminal of each computer.
 
 ### Step 1: Prepare RSA conditions.
 
-In container of receiver, use these 2 commands of openssl to create public key and private key using RSA
+In container of receiver, use these 2 commands of openssl to create public key and private key using RSA algorithm
 
 ```
 openssl genpkey -algorithm RSA -out private_key.pem
