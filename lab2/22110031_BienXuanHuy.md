@@ -23,7 +23,7 @@ apt install openssl
 apt install netcat-traditional
 ```
 
-Explain each options:
+Explain each option:
 - apt install net-tools: In order to use *ifconfig* to check IP adress.
 - apt install openssl: Use openssl to achieve secure goal.
 - apt install netcat-traditional: Use netcat to send - receive files.
