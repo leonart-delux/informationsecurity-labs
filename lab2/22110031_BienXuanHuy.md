@@ -205,5 +205,47 @@ From VMs of previous tasks, install iptables and configure one of the 2 VMs as a
 
 **Answer 1**:
 
+### Step 1: Set up environment on server
+
+I will configure the first container (the sender of 2 previous tasks) to be a web server.
+
+First we need to install needed packages:
+
+```
+sudo apt install iptables
+sudo apt install apache2
+sudo apt install openssh-server
+```
+
+Explain each package:
+- iptables: In order to configure the firewall.
+- apache2: The server we will use.
+- openssh-server: Turn the server into SSH server, accepting allowed SSH requests.
+
+Start and check status of server with these 2 commands.
+
+```
+sudo service apache2 start
+sudo service apache2 status
+```
+
+Result:
+
+<img width="500" alt="Screenshot" src="https://github.com/leonart-delux/informationsecurity-labs/blob/7938273d87f036043cf0752e23eafc617cc445d1/lab2/image/apacheStart.jpg">
+
+Server is running normally.
+
+Start and check status of SSH server with these 2 commands.
+
+```
+sudo service ssh start
+sudo service ssh status
+```
+
+Result:
+
+<img width="500" alt="Screenshot" src="https://github.com/leonart-delux/informationsecurity-labs/blob/7938273d87f036043cf0752e23eafc617cc445d1/lab2/image/sshStart.jpg">
+
+SSH is running normally.
 
 
