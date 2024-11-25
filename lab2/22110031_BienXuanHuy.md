@@ -135,6 +135,40 @@ Here's the result in container of sender:
 
 <img width="500" alt="Screenshot" src="https://github.com/leonart-delux/informationsecurity-labs/blob/519cd03bd73a458c0834715ca0f5cbdeaa1d7160/lab2/image/senderReceivePubkey.jpg">
 
+### Step 2: Send secret key and encrypted file
+
+Back to container of sender, now I will again send encrypted version of *greet.txt* (which I created in previous task). First I will encypt *greet.txt* using AES in CBC mode with key is *secret0724*. The result will be saved in *greet.enc*.
+
+```
+openssl enc -aes-256-cbc -in greet.txt -out greet.enc -k secret0724
+```
+
+Then I will use RSA algorithm to encrypt the secret key which saved in *secret.txt* using public key of receiver. The result will be saved in *secret_key.enc*.
+
+```
+openssl rsautl -encrypt -inkey receiver_pub_key.pem -pubin -in secret.txt -out secret_key.enc
+```
+
+Now I will send *secret_key.enc* and *greet.enc* from sender to receiver using netcat
+
+
+### Step 3: Decryption.
+
+In receiver, use this command to decrypt the secret key of cyphertext
+
+```
+openssl rsautl -decrypt -inkey private_key.pem -in enc_key.txt -out secret_key.txt
+```
+
+Then, use the decrypted secret key to decrypt the cyphertext
+
+```
+openssl enc -d -aes-256-cbc -in enc_file.txt -out dec_file.txt -k $(cat secret_key.txt)
+```
+
+Here's the result.
+
+Mission completed.
 
 
 # Task 3: Firewall configuration
